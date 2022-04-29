@@ -23,6 +23,10 @@ namespace Ejercicio_Guía_9
 
         //Variables para el control de ventanas modales
         private Vertice ventanaVertice; //Ventana para agregar los vértices (Que es el form de Agregar Vertice)
+        private EliminarVertice eliminarVertice;
+        private CVertice NodoEliminar;
+
+        Graphics g;
 
         public Simulador()
         {
@@ -137,7 +141,8 @@ namespace Ejercicio_Guía_9
             if(e.Button == System.Windows.Forms.MouseButtons.Left) //Si se ha presionado el botón izquierdo del mouse
             {
 
-                if((NodoOrigen = grafo.DetectarPunto(e.Location))!=null)
+
+                if ((NodoOrigen = grafo.DetectarPunto(e.Location))!=null)
                 {
                     var_control = 1; //Como var_control = 1, significa que la pizarra esta en el estado
                                      //de dibujando arco
@@ -148,6 +153,7 @@ namespace Ejercicio_Guía_9
                     ventanaVertice.Visible = false;
                     ventanaVertice.control = false;
                     ventanaVertice.ShowDialog();
+
 
                     if(ventanaVertice.control)
                     {
@@ -161,8 +167,54 @@ namespace Ejercicio_Guía_9
                             MessageBox.Show("El Nodo "+ventanaVertice.txtVertice.Text+" ya existe en el grafo","Error nuevo Nodo",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                         }    
                     }
+
+
+                    /*
+                    eliminarVertice.prueba = false;
+
+                    if (eliminarVertice.prueba) 
+                    {
+                        if (grafo.BuscarVertice(eliminarVertice.txtEliminar.Text) != null)
+                        {
+                            grafo.ElimminarVertice(eliminarVertice.txtEliminar.Text);
+
+
+
+                            foreach (CVertice nodo in grafo.nodos)
+                                MessageBox.Show(" asda" + nodo);
+
+                            //nodo.DibujarVertice(g);
+                        }
+                    }
+
+                   ventanaVertice.Visible = false;
+                   ventanaVertice.control = false;
+                   ventanaVertice.ShowDialog();
+
+                   if (eliminarVertice.prueba)
+                   {
+                       if (grafo.BuscarVertice(eliminarVertice.txtEliminar.Text) != null) 
+                       {
+                           grafo.ElimminarVertice(eliminarVertice.txtEliminar.Text);
+
+
+
+                           foreach (CVertice nodo in grafo.nodos)
+                               MessageBox.Show(" asda" + nodo);
+
+                           //nodo.DibujarVertice(g);
+                       }
+                       else
+                       {
+
+                       }
+                   }
+
+                   */
+
                     nuevoNodo = null;
                     var_control = 0;
+                    Pizarra.Refresh();
                     Pizarra.Refresh();
                 }
 
@@ -183,6 +235,12 @@ namespace Ejercicio_Guía_9
 
             }
 
+        }
+
+        private void eliminarVérticeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EliminarVertice verticeEliminar = new EliminarVertice();
+            verticeEliminar.Show();
         }
     }
 

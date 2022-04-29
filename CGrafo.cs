@@ -36,6 +36,14 @@ namespace Ejercicio_Guía_9
             return nodo;
         }
 
+        public void ElimminarVertice(string valor)
+        {
+            CVertice nodo = new CVertice(valor);
+            nodos.Remove(nodo);
+
+        }
+
+
         //Agrega un nodo a la lista de nodos del grafo
         public void AgregarVertice (CVertice nuevoNodo)
         {

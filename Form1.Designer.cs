@@ -34,6 +34,7 @@ namespace Ejercicio_Guía_9
             this.label1 = new System.Windows.Forms.Label();
             this.CMSCrearVertice = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoVérticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarVérticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CMSCrearVertice.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,16 +64,24 @@ namespace Ejercicio_Guía_9
             // CMSCrearVertice
             // 
             this.CMSCrearVertice.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nuevoVérticeToolStripMenuItem});
+            this.nuevoVérticeToolStripMenuItem,
+            this.eliminarVérticeToolStripMenuItem});
             this.CMSCrearVertice.Name = "CMSCrearVertice";
-            this.CMSCrearVertice.Size = new System.Drawing.Size(148, 26);
+            this.CMSCrearVertice.Size = new System.Drawing.Size(156, 48);
             // 
             // nuevoVérticeToolStripMenuItem
             // 
             this.nuevoVérticeToolStripMenuItem.Name = "nuevoVérticeToolStripMenuItem";
-            this.nuevoVérticeToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.nuevoVérticeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nuevoVérticeToolStripMenuItem.Text = "Nuevo Vértice";
             this.nuevoVérticeToolStripMenuItem.Click += new System.EventHandler(this.nuevoVérticeToolStripMenuItem_Click);
+            // 
+            // eliminarVérticeToolStripMenuItem
+            // 
+            this.eliminarVérticeToolStripMenuItem.Name = "eliminarVérticeToolStripMenuItem";
+            this.eliminarVérticeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarVérticeToolStripMenuItem.Text = "Eliminar Vértice";
+            this.eliminarVérticeToolStripMenuItem.Click += new System.EventHandler(this.eliminarVérticeToolStripMenuItem_Click);
             // 
             // Simulador
             // 
@@ -98,6 +107,7 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip CMSCrearVertice;
         private System.Windows.Forms.ToolStripMenuItem nuevoVérticeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarVérticeToolStripMenuItem;
     }
 }
 
