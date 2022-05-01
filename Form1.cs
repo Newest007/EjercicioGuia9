@@ -23,10 +23,7 @@ namespace Ejercicio_Guía_9
 
         //Variables para el control de ventanas modales
         private Vertice ventanaVertice; //Ventana para agregar los vértices (Que es el form de Agregar Vertice)
-        private EliminarVertice eliminarVertice;
-        private CVertice NodoEliminar;
 
-        Graphics g;
 
         public Simulador()
         {
@@ -239,8 +236,9 @@ namespace Ejercicio_Guía_9
 
         private void eliminarVérticeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EliminarVertice verticeEliminar = new EliminarVertice();
-            verticeEliminar.Show();
+
+
+
         }
     }
 
