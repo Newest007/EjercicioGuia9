@@ -10,30 +10,30 @@ using System.Windows.Forms;
 
 namespace Ejercicio_Guía_9
 {
-    public partial class Vertice : Form
+    public partial class Arco : Form
     {
         public bool control; //Variable de control
-        public string dato; //El dato que almacenará el vértice
+        public string dato;     //El dato que almacenará el vértice
 
-        public Vertice()
+        public Arco()
         {
             InitializeComponent();
             control = false;
             dato = "";
         }
 
-        private void Agregar_Vertice_Load(object sender, EventArgs e)
+        private void Arco_Load(object sender, EventArgs e)
         {
-            txtVertice.Focus();
+            txtArco.Focus();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            dato = txtVertice.Text.Trim();
+            dato = txtArco.Text.Trim();
 
-            if((dato == "")|| (dato == " "))
+            if ((dato == "") || (dato == " "))
             {
-                MessageBox.Show("Hola rey debes de ingresar un valor","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Hola rey debes de ingresar un valor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -49,19 +49,19 @@ namespace Ejercicio_Guía_9
             Hide();
         }
 
-        private void Agregar_Vertice_FormClosing(object sender, FormClosingEventArgs e)
+        private void Arco_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
             e.Cancel = true;
         }
 
-        private void Agregar_Vertice_Shown(object sender, EventArgs e)
+        private void Arco_Shown(object sender, EventArgs e)
         {
-            txtVertice.Clear();
-            txtVertice.Focus();
+            txtArco.Clear();
+            txtArco.Focus();
         }
 
-        private void Agregar_Vertice_KeyDown(object sender, KeyEventArgs e)
+        private void Arco_KeyDown(object sender, KeyEventArgs e)
         {
 
         }
@@ -70,7 +70,7 @@ namespace Ejercicio_Guía_9
         {
             if(e.KeyCode == Keys.Enter)
             {
-                btnAceptar_Click(null, null);
+                btnAceptar_Click(null,null);
             }
         }
     }

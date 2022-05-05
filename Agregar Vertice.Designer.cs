@@ -40,7 +40,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(84, 9);
+            this.label1.Location = new System.Drawing.Point(90, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(191, 28);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 58);
+            this.label2.Location = new System.Drawing.Point(121, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 23);
             this.label2.TabIndex = 1;
@@ -59,7 +59,7 @@ namespace Ejercicio_Guía_9
             // txtVertice
             // 
             this.txtVertice.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVertice.Location = new System.Drawing.Point(155, 58);
+            this.txtVertice.Location = new System.Drawing.Point(129, 109);
             this.txtVertice.Name = "txtVertice";
             this.txtVertice.Size = new System.Drawing.Size(100, 29);
             this.txtVertice.TabIndex = 2;
@@ -68,9 +68,10 @@ namespace Ejercicio_Guía_9
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAceptar.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAceptar.Location = new System.Drawing.Point(66, 107);
+            this.btnAceptar.Location = new System.Drawing.Point(63, 148);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(91, 44);
             this.btnAceptar.TabIndex = 3;
@@ -81,9 +82,10 @@ namespace Ejercicio_Guía_9
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancelar.Location = new System.Drawing.Point(217, 107);
+            this.btnCancelar.Location = new System.Drawing.Point(200, 148);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 44);
             this.btnCancelar.TabIndex = 4;
@@ -95,7 +97,7 @@ namespace Ejercicio_Guía_9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 163);
+            this.ClientSize = new System.Drawing.Size(352, 227);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtVertice);

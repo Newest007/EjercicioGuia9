@@ -10,6 +10,10 @@ namespace Ejercicio_Guía_9
 {
     class CVertice //Esta clase sirve para definir los nodos (Vértices) del grafo
     {
+        public int distanciaNodo; //Variable para guardar la distancia que hay entre el nodo inicio en el algoritmo de Dijkstra
+        public Boolean Visitando; //Variable que sirve para marcar como visto el nodo en un recorrido
+        public CVertice Padre;    //Nodo que sirve en los recorridos como antecesor
+        public Boolean pesoAsignado; //Variable que se usa en el algoritmo de Dijkstra
 
         public string Valor; //Valor para almacenar y representar el nodo
         public List<CArco> ListaAdyacencia; //Lista de adyacencia del nodo
@@ -67,7 +71,7 @@ namespace Ejercicio_Guía_9
             this.ListaAdyacencia = new List<CArco>();
             this._banderas = new Dictionary<string, short>();
             this._banderas_predeterminado = new Dictionary<string, short>();
-            this.Color = Color.FromArgb(2, 57, 62); //Color del nodo
+            this.Color = Color.FromArgb(222, 17, 84); //Color del nodo
             this.Dimensiones = new Size(size, size);
             this.FontColor = Color.White; //Color de la letra del vértice
         }
@@ -93,7 +97,7 @@ namespace Ejercicio_Guía_9
             g.FillEllipse(b, areaNodo);
 
             //Para dibujar el texto y el tipo de letra que tendrá
-            g.DrawString(this.Valor, new Font("Time New Roman", 14), new SolidBrush(color_fuente),
+            g.DrawString(this.Valor, new Font("Time New Roman", 10), new SolidBrush(color_fuente), //Tipo de fuente y tamaño del texto del nodo
                          this._posicion.X, this._posicion.Y,
                          new StringFormat()
                          {
@@ -158,8 +162,33 @@ namespace Ejercicio_Guía_9
 
         public string ToString()
         {
+            this.Color = Color.FromArgb(51, 204, 255); //Definiendo el color del nodo
+            this.FontColor = Color.Black;              //Color de la fuente
+            this.Visitando = false;
             return this.Valor;
         }
+
+        public void colorear(Graphics g)
+        {
+            SolidBrush b = new SolidBrush(Color.GreenYellow);
+            //Definiendo donde se dibujara el nodo
+            Rectangle areaNodo = new Rectangle(this._posicion.X - radio, this._posicion.Y - radio,
+                this.dimensiones.Width, this.dimensiones.Height);
+            g.FillEllipse(b, areaNodo);
+            g.DrawString(this.Valor, new Font("Time New Roman", 14), new SolidBrush(color_fuente),
+                this._posicion.X, this._posicion.Y,
+                new StringFormat()
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+
+                });
+            g.DrawEllipse(new Pen(Brushes.Black, (float)1.0), areaNodo);
+            b.Dispose();
+        }
+
+
+
 
     }
 }

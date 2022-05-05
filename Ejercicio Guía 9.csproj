@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Agregar Arco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agregar Arco.Designer.cs">
+      <DependentUpon>Agregar Arco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Agregar Vertice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Agregar Arco.resx">
+      <DependentUpon>Agregar Arco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Agregar Vertice.resx">
       <DependentUpon>Agregar Vertice.cs</DependentUpon>
     </EmbeddedResource>
