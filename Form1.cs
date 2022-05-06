@@ -236,7 +236,6 @@ namespace Ejercicio_Guía_9
             var_control = 2;
             //Recordando que cuando var_control = 2: Nuevo vértice
 
-            label6.Text = distancia.ToString();
 
         }
 
