@@ -317,12 +317,40 @@ namespace Ejercicio_Guía_9
             }
             else
             {
-
+                errorProvider1.SetError(CBNodoPartida, "Seleccione nodo de partida");
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
+            if(CBNodoPartida.SelectedIndex > -1)
+            {
+                origen = CBNodoPartida.SelectedItem.ToString();
+                anchura = true;
+                Pizarra.Refresh();
+                CBNodoPartida.SelectedIndex = -1;
+            }
+
+            else
+            {
+                errorProvider1.SetError(CBNodoPartida, "Seleccione nodo de partida");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(txtBuscar.Text.Trim() != "")
+            {
+                if(grafo.BuscarVertice(txtBuscar.Text)!= null)
+                {
+                    MessageBox.Show("El vértice " + txtBuscar.Text + " si se encuentra");
+                }
+                else
+                {
+                    MessageBox.Show("El vértice " + txtBuscar.Text + " no se encuentra");
+                }
+            }
 
         }
 

@@ -170,12 +170,12 @@ namespace Ejercicio_Guía_9
 
         public void colorear(Graphics g)
         {
-            SolidBrush b = new SolidBrush(Color.GreenYellow);
+            SolidBrush b = new SolidBrush(Color.FromArgb(15, 157, 88));
             //Definiendo donde se dibujara el nodo
             Rectangle areaNodo = new Rectangle(this._posicion.X - radio, this._posicion.Y - radio,
                 this.dimensiones.Width, this.dimensiones.Height);
             g.FillEllipse(b, areaNodo);
-            g.DrawString(this.Valor, new Font("Time New Roman", 14), new SolidBrush(color_fuente),
+            g.DrawString(this.Valor, new Font("Time New Roman", 10), new SolidBrush(color_fuente),
                 this._posicion.X, this._posicion.Y,
                 new StringFormat()
                 {
@@ -186,9 +186,6 @@ namespace Ejercicio_Guía_9
             g.DrawEllipse(new Pen(Brushes.Black, (float)1.0), areaNodo);
             b.Dispose();
         }
-
-
-
 
     }
 }

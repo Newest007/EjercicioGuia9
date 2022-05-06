@@ -104,6 +104,7 @@ namespace Ejercicio_Guía_9
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Arco";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar_Arco";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Arco_FormClosing);
             this.Load += new System.EventHandler(this.Arco_Load);
