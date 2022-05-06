@@ -55,7 +55,7 @@ namespace Ejercicio_Guía_9
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+           
         }
 
         private void Pizarra_Paint(object sender, PaintEventArgs e)
@@ -235,6 +235,9 @@ namespace Ejercicio_Guía_9
             nuevoNodo = new CVertice();
             var_control = 2;
             //Recordando que cuando var_control = 2: Nuevo vértice
+
+            label6.Text = distancia.ToString();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -509,6 +512,12 @@ namespace Ejercicio_Guía_9
                 }
             }
         }
+
+
+
+
+
+
     }
 
 }
