@@ -267,19 +267,62 @@ namespace Ejercicio_Guía_9
 
                 nuevoArco = true;
                 nuevoVertice = true;
-                CBVertice.SelectedItem = -1;
+                CBVertice.SelectedIndex = -1;
                 Pizarra.Refresh();
 
             }
-            else
+            else if(CBVertice.SelectedIndex == -1)
             {
                 errorProvider1.SetError(CBVertice, "Debes de seleccionar un nodo");
             }
 
+            if(CBArco.SelectedIndex > -1)
+            {
+                foreach (CVertice nodo in grafo.nodos)
+                {
+                    foreach (CArco arco in nodo.ListaAdyacencia)
+                    {
+                        if("(" + nodo.Valor + "," + arco.nDestino.Valor + ") peso: " + arco.peso == CBArco.SelectedItem.ToString())
+                        {
+                            nodo.ListaAdyacencia.Remove(arco);
+                            break;
+                        }
+
+                    }
 
 
+                }
 
+                nuevoVertice = true;
+                nuevoArco = true;
+                CBArco.SelectedIndex = -1;
+                Pizarra.Refresh();
+            }
+            else if(CBArco.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(CBArco, "Debes de seleccionar un arco");
+            }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (CBNodoPartida.SelectedIndex > -1) 
+            {
+                profundidad = true;
+                origen = CBNodoPartida.SelectedItem.ToString();
+                Pizarra.Refresh();
+                CBNodoPartida.SelectedItem = -1;
+            }
+            else
+            {
+
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
 
         }
 

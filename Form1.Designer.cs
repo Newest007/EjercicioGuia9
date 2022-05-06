@@ -42,8 +42,8 @@ namespace Ejercicio_Guía_9
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAnchura = new System.Windows.Forms.Button();
+            this.btnProfundidad = new System.Windows.Forms.Button();
             this.CBNodoPartida = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -54,7 +54,6 @@ namespace Ejercicio_Guía_9
             this.añadirVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.CMSVertice.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -66,9 +65,9 @@ namespace Ejercicio_Guía_9
             // Pizarra
             // 
             this.Pizarra.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Pizarra.Location = new System.Drawing.Point(312, 60);
+            this.Pizarra.Location = new System.Drawing.Point(321, 60);
             this.Pizarra.Name = "Pizarra";
-            this.Pizarra.Size = new System.Drawing.Size(483, 417);
+            this.Pizarra.Size = new System.Drawing.Size(474, 417);
             this.Pizarra.TabIndex = 0;
             this.Pizarra.Paint += new System.Windows.Forms.PaintEventHandler(this.Pizarra_Paint);
             this.Pizarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pizarra_MouseDown);
@@ -119,7 +118,7 @@ namespace Ejercicio_Guía_9
             this.groupBox1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 131);
+            this.groupBox1.Size = new System.Drawing.Size(285, 164);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Eliminar";
@@ -129,7 +128,7 @@ namespace Ejercicio_Guía_9
             this.btnEliminarVertice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
             this.btnEliminarVertice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarVertice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnEliminarVertice.Location = new System.Drawing.Point(184, 33);
+            this.btnEliminarVertice.Location = new System.Drawing.Point(102, 118);
             this.btnEliminarVertice.Name = "btnEliminarVertice";
             this.btnEliminarVertice.Size = new System.Drawing.Size(80, 34);
             this.btnEliminarVertice.TabIndex = 4;
@@ -141,16 +140,16 @@ namespace Ejercicio_Guía_9
             // 
             this.CBArco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBArco.FormattingEnabled = true;
-            this.CBArco.Location = new System.Drawing.Point(78, 85);
+            this.CBArco.Location = new System.Drawing.Point(78, 79);
             this.CBArco.Name = "CBArco";
-            this.CBArco.Size = new System.Drawing.Size(79, 31);
+            this.CBArco.Size = new System.Drawing.Size(126, 31);
             this.CBArco.TabIndex = 3;
             // 
             // CBVertice
             // 
             this.CBVertice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBVertice.FormattingEnabled = true;
-            this.CBVertice.Location = new System.Drawing.Point(78, 34);
+            this.CBVertice.Location = new System.Drawing.Point(103, 35);
             this.CBVertice.Name = "CBVertice";
             this.CBVertice.Size = new System.Drawing.Size(79, 31);
             this.CBVertice.TabIndex = 2;
@@ -159,7 +158,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 88);
+            this.label3.Location = new System.Drawing.Point(27, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 23);
             this.label3.TabIndex = 1;
@@ -169,7 +168,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 37);
+            this.label2.Location = new System.Drawing.Point(40, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 23);
             this.label2.TabIndex = 0;
@@ -177,41 +176,43 @@ namespace Ejercicio_Guía_9
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnAnchura);
+            this.groupBox2.Controls.Add(this.btnProfundidad);
             this.groupBox2.Controls.Add(this.CBNodoPartida);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 160);
+            this.groupBox2.Location = new System.Drawing.Point(21, 181);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(269, 131);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recorridos";
             // 
-            // button3
+            // btnAnchura
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(131, 81);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(117, 34);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Anchura";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnAnchura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnAnchura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnchura.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAnchura.Location = new System.Drawing.Point(131, 81);
+            this.btnAnchura.Name = "btnAnchura";
+            this.btnAnchura.Size = new System.Drawing.Size(117, 34);
+            this.btnAnchura.TabIndex = 5;
+            this.btnAnchura.Text = "Anchura";
+            this.btnAnchura.UseVisualStyleBackColor = false;
+            this.btnAnchura.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnProfundidad
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(6, 81);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 34);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Profundidad";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnProfundidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnProfundidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfundidad.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnProfundidad.Location = new System.Drawing.Point(6, 81);
+            this.btnProfundidad.Name = "btnProfundidad";
+            this.btnProfundidad.Size = new System.Drawing.Size(117, 34);
+            this.btnProfundidad.TabIndex = 4;
+            this.btnProfundidad.Text = "Profundidad";
+            this.btnProfundidad.UseVisualStyleBackColor = false;
+            this.btnProfundidad.Click += new System.EventHandler(this.button2_Click);
             // 
             // CBNodoPartida
             // 
@@ -237,7 +238,7 @@ namespace Ejercicio_Guía_9
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(52, 297);
+            this.groupBox3.Location = new System.Drawing.Point(52, 316);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(205, 111);
             this.groupBox3.TabIndex = 5;
@@ -278,7 +279,7 @@ namespace Ejercicio_Guía_9
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(87, 414);
+            this.button5.Location = new System.Drawing.Point(87, 436);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 41);
             this.button5.TabIndex = 6;
@@ -303,24 +304,11 @@ namespace Ejercicio_Guía_9
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(341, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 34);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 489);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -360,8 +348,8 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEliminarVertice;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAnchura;
+        private System.Windows.Forms.Button btnProfundidad;
         private System.Windows.Forms.ComboBox CBNodoPartida;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -372,7 +360,6 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.ToolStripMenuItem añadirVerticeToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button button1;
     }
 }
 
