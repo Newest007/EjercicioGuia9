@@ -13,13 +13,13 @@ namespace Ejercicio_Guía_9
     public partial class Arco : Form
     {
         public bool control; //Variable de control
-        public string dato;     //El dato que almacenará el vértice
+        public int dato;     //El dato que almacenará el vértice
 
         public Arco()
         {
             InitializeComponent();
             control = false;
-            dato = "";
+            dato = 0;
         }
 
         private void Arco_Load(object sender, EventArgs e)
@@ -29,16 +29,23 @@ namespace Ejercicio_Guía_9
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            dato = txtArco.Text.Trim();
-
-            if ((dato == "") || (dato == " "))
+            try
             {
-                MessageBox.Show("Hola rey debes de ingresar un valor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                dato = Convert.ToInt16(txtArco.Text.Trim());
+                if(dato < 0)
+                {
+                    MessageBox.Show("Debes ingresar un valor positivo","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    control = true;
+                    Hide();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                control = true;
-                Hide();
+                MessageBox.Show("Debes de ingresar un valor numerico","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+
             }
 
         }

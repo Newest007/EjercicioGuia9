@@ -55,7 +55,7 @@ namespace Ejercicio_Guía_9
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void Pizarra_Paint(object sender, PaintEventArgs e)
@@ -160,21 +160,22 @@ namespace Ejercicio_Guía_9
             switch(var_control)
             {
                 case 1: //Dibujando arco
-                    if((NodoDestino = grafo.DetectarPunto(e.Location))!= null && NodoOrigen != NodoDestino)
+                    if ((NodoDestino = grafo.DetectarPunto(e.Location)) != null && NodoOrigen != NodoDestino)
                     {
                         ventanaArco.Visible = false;
                         ventanaArco.control = false;
                         ventanaArco.ShowDialog();
                         if (ventanaArco.control)
                         {
-
-                            if (grafo.AgregarArco(NodoOrigen, NodoDestino)) //Creando la arista
+                            if (grafo.AgregarArco(NodoOrigen, NodoDestino,ventanaArco.dato)) //Creando la arista
                             {
-                                int distancia = 0;
+                                int distancia = ventanaArco.dato;
                                 NodoOrigen.ListaAdyacencia.Find(v => v.nDestino == NodoDestino).peso = distancia;
                             }
                             nuevoArco = true;
                         }
+
+
                     }
                     var_control = 0;
                     NodoOrigen = null;
@@ -212,7 +213,7 @@ namespace Ejercicio_Guía_9
 
                 case 1: //Dibujando el arco
                     AdjustableArrowCap bigArrow = new AdjustableArrowCap(4, 4, true);
-                    bigArrow.BaseCap = System.Drawing.Drawing2D.LineCap.Triangle;
+                    bigArrow.BaseCap = LineCap.Triangle;
 
                     Pizarra.Refresh();
                     Pizarra.CreateGraphics().DrawLine(new Pen(Brushes.Black, 2)
@@ -234,6 +235,52 @@ namespace Ejercicio_Guía_9
             nuevoNodo = new CVertice();
             var_control = 2;
             //Recordando que cuando var_control = 2: Nuevo vértice
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+            if (CBVertice.SelectedIndex > -1)
+            {
+                foreach (CVertice nodo in grafo.nodos)
+                {
+                    if(nodo.Valor == CBVertice.SelectedItem.ToString())
+                    {
+                        grafo.nodos.Remove(nodo);
+                        //Borrando arcos que posea el nodo eliminado
+                        nodo.ListaAdyacencia = new List<CArco>();
+                        break;
+                    }
+                }
+
+                foreach (CVertice nodo in grafo.nodos)
+                {
+                    foreach (CArco arco in nodo.ListaAdyacencia)
+                    {
+                        if(arco.nDestino.Valor == CBVertice.SelectedItem.ToString())
+                        {
+                            nodo.ListaAdyacencia.Remove(arco);
+                            break;
+                        }
+                    }
+                }
+
+                nuevoArco = true;
+                nuevoVertice = true;
+                CBVertice.SelectedItem = -1;
+                Pizarra.Refresh();
+
+            }
+            else
+            {
+                errorProvider1.SetError(CBVertice, "Debes de seleccionar un nodo");
+            }
+
+
+
+
+
+
         }
 
         private void Pizarra_MouseDown(object sender, MouseEventArgs e)
@@ -263,20 +310,34 @@ namespace Ejercicio_Guía_9
                         }
                         else
                         {
-
                             MessageBox.Show("El Nodo " + ventanaVertice.dato + " ya existe en el grafo", "Error nuevo Nodo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }    
+                        }
                     }
 
-
-                    
+                    nuevoNodo = null;
+                    nuevoVertice = true;
+                    var_control = 0;
+                    Pizarra.Refresh();
                 }
-                nuevoNodo = null;
-                nuevoVertice = true;
-                var_control = 0;
-                Pizarra.Refresh();
-            }
 
+                if (e.Button == MouseButtons.Right) //Si se ha presionado el botón derecho del mouse
+                {
+                    if (var_control == 0)
+                    {
+                        if ((NodoOrigen = grafo.DetectarPunto(e.Location)) != null)
+                        {
+                            Pizarra.ContextMenuStrip = this.CMSVertice;
+                            nombreVerticeToolStripMenuItem.Text = "Nodo " + NodoOrigen.Valor;
+                            nombreVerticeToolStripMenuItem.Enabled = false;
+                        }
+                        else
+                            Pizarra.ContextMenuStrip = this.contextMenuStrip1;
+
+                    }
+                }
+
+            }
+                
             if(e.Button == MouseButtons.Right) //Si se ha presionado el botón derecho del mouse
             {
                 if(var_control == 0)

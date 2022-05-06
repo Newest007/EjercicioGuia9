@@ -33,7 +33,7 @@ namespace Ejercicio_Guía_9
             this.nDestino = destino;
             this.peso = peso;
             this.grosor_flecha = 2;
-            this.color = Color.Red; //Color del arco
+            this.color = Color.Black; //Color del arco
         }
 
     }

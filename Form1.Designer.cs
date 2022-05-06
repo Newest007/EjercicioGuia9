@@ -36,7 +36,7 @@ namespace Ejercicio_Guía_9
             this.nombreVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarVérticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnEliminarVertice = new System.Windows.Forms.Button();
             this.CBArco = new System.Windows.Forms.ComboBox();
             this.CBVertice = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,11 +53,14 @@ namespace Ejercicio_Guía_9
             this.button5 = new System.Windows.Forms.Button();
             this.añadirVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.CMSVertice.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // Pizarra
@@ -102,13 +105,13 @@ namespace Ejercicio_Guía_9
             // eliminarVérticeToolStripMenuItem
             // 
             this.eliminarVérticeToolStripMenuItem.Name = "eliminarVérticeToolStripMenuItem";
-            this.eliminarVérticeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarVérticeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.eliminarVérticeToolStripMenuItem.Text = "Eliminar Vértice";
             this.eliminarVérticeToolStripMenuItem.Click += new System.EventHandler(this.eliminarVérticeToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnEliminarVertice);
             this.groupBox1.Controls.Add(this.CBArco);
             this.groupBox1.Controls.Add(this.CBVertice);
             this.groupBox1.Controls.Add(this.label3);
@@ -116,33 +119,36 @@ namespace Ejercicio_Guía_9
             this.groupBox1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(269, 110);
+            this.groupBox1.Size = new System.Drawing.Size(269, 131);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Eliminar";
             // 
-            // button1
+            // btnEliminarVertice
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(168, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 46);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnEliminarVertice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnEliminarVertice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarVertice.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminarVertice.Location = new System.Drawing.Point(184, 33);
+            this.btnEliminarVertice.Name = "btnEliminarVertice";
+            this.btnEliminarVertice.Size = new System.Drawing.Size(80, 34);
+            this.btnEliminarVertice.TabIndex = 4;
+            this.btnEliminarVertice.Text = "Eliminar";
+            this.btnEliminarVertice.UseVisualStyleBackColor = false;
+            this.btnEliminarVertice.Click += new System.EventHandler(this.button1_Click);
             // 
             // CBArco
             // 
+            this.CBArco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBArco.FormattingEnabled = true;
-            this.CBArco.Location = new System.Drawing.Point(78, 67);
+            this.CBArco.Location = new System.Drawing.Point(78, 85);
             this.CBArco.Name = "CBArco";
             this.CBArco.Size = new System.Drawing.Size(79, 31);
             this.CBArco.TabIndex = 3;
             // 
             // CBVertice
             // 
+            this.CBVertice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBVertice.FormattingEnabled = true;
             this.CBVertice.Location = new System.Drawing.Point(78, 34);
             this.CBVertice.Name = "CBVertice";
@@ -153,7 +159,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 70);
+            this.label3.Location = new System.Drawing.Point(33, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 23);
             this.label3.TabIndex = 1;
@@ -176,7 +182,7 @@ namespace Ejercicio_Guía_9
             this.groupBox2.Controls.Add(this.CBNodoPartida);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 128);
+            this.groupBox2.Location = new System.Drawing.Point(21, 160);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(269, 131);
             this.groupBox2.TabIndex = 4;
@@ -231,7 +237,7 @@ namespace Ejercicio_Guía_9
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(52, 264);
+            this.groupBox3.Location = new System.Drawing.Point(52, 297);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(205, 111);
             this.groupBox3.TabIndex = 5;
@@ -272,7 +278,7 @@ namespace Ejercicio_Guía_9
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(87, 392);
+            this.button5.Location = new System.Drawing.Point(87, 414);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 41);
             this.button5.TabIndex = 6;
@@ -293,11 +299,28 @@ namespace Ejercicio_Guía_9
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(341, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 34);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 489);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -317,6 +340,7 @@ namespace Ejercicio_Guía_9
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,7 +358,7 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.ComboBox CBVertice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEliminarVertice;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
@@ -347,6 +371,8 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ToolStripMenuItem añadirVerticeToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
