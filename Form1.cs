@@ -36,6 +36,11 @@ namespace Ejercicio_Guía_9
         private int distancia = 0;
 
 
+
+        private Dijkstra algoritmoDijkstra; // instanciamos la clase Dijkstra
+        private NodoDijkstra nodoDijkstra; // ventana para elegir el nodo inicial
+        int[,] matriz;
+
         public Simulador()
         {
             InitializeComponent();
@@ -70,10 +75,13 @@ namespace Ejercicio_Guía_9
                     CBVertice.SelectedIndex = -1;
                     CBNodoPartida.Items.Clear();
                     CBNodoPartida.SelectedIndex = -1;
+
+
                     foreach (CVertice nodo in grafo.nodos)
                     {
                         CBVertice.Items.Add(nodo.Valor);
                         CBNodoPartida.Items.Add(nodo.Valor);
+
                     }
                     nuevoVertice = false;
                 }
@@ -94,6 +102,7 @@ namespace Ejercicio_Guía_9
                 {
                     foreach (CVertice nodo in nodosRuta)
                     {
+
                         nodo.colorear(e.Graphics);
                         Thread.Sleep(1000);
                         nodo.DibujarVertice(e.Graphics);
@@ -103,36 +112,50 @@ namespace Ejercicio_Guía_9
 
                 if(profundidad)
                 {
+                    lstboxDatos.Items.Clear();
+                    lstboxDatos.Items.Add("Recorrido en Profundidad");
+
                     //Ordenando los nodos desde el que indica el usuario
                     ordenarNodos();
+
                     foreach (CVertice nodo in nodosOrdenados)
-                    {
                         if (!nodo.Visitando)
                             recorridoProfundidad(nodo, e.Graphics);
-                    }
+                        
                     profundidad = false;
+
                     //Reestableciendo los valores
                     foreach (CVertice nodo in grafo.nodos)
+                    {
                         nodo.Visitando = false;
+                        //lstboxDatos.Items.Add(nodo.Valor);
+                    }
                 }
 
                 if(anchura)
                 {
+                    lstboxDatos.Items.Clear();
+                    lstboxDatos.Items.Add("Recorrido en Anchura");
+
                     distancia = 0;
                     //Ordenando los nodos desde el que indica el usuario
-                    cola = new Queue();
+                    cola = new Queue();   
                     ordenarNodos();
+
                     foreach (CVertice nodo in nodosOrdenados)
-                    {
                         if (!nodo.Visitando && !nodoEncontrado)
                             recorridoAnchura(nodo, e.Graphics, destino);
-                    }
+                        
+                    
                     anchura = false;
                     nodoEncontrado = false;
+
                     //Reestableciendo los valores
                     foreach (CVertice nodo in grafo.nodos)
+                    {
                         nodo.Visitando = false;
-                    
+                        //lstboxDatos.Items.Add(nodo.Valor);
+                    }
                 }
 
             }
@@ -241,7 +264,7 @@ namespace Ejercicio_Guía_9
 
         private void button1_Click(object sender, EventArgs e)
         {
-            errorProvider1.Clear();
+
             if (CBVertice.SelectedIndex > -1)
             {
                 foreach (CVertice nodo in grafo.nodos)
@@ -275,7 +298,7 @@ namespace Ejercicio_Guía_9
             }
             else if(CBVertice.SelectedIndex == -1)
             {
-                errorProvider1.SetError(CBVertice, "Debes de seleccionar un nodo");
+
             }
 
             if(CBArco.SelectedIndex > -1)
@@ -302,16 +325,19 @@ namespace Ejercicio_Guía_9
             }
             else if(CBArco.SelectedIndex == -1)
             {
-                errorProvider1.SetError(CBArco, "Debes de seleccionar un arco");
+
             }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            lstboxDatos.Items.Clear();
             errorProvider1.Clear();
+
             if (CBNodoPartida.SelectedIndex > -1) 
             {
+
                 profundidad = true;
                 origen = CBNodoPartida.SelectedItem.ToString();
                 Pizarra.Refresh();
@@ -325,11 +351,12 @@ namespace Ejercicio_Guía_9
 
         private void button3_Click(object sender, EventArgs e)
         {
+            lstboxDatos.Items.Clear();
             errorProvider1.Clear();
             if(CBNodoPartida.SelectedIndex > -1)
             {
-                origen = CBNodoPartida.SelectedItem.ToString();
                 anchura = true;
+                origen = CBNodoPartida.SelectedItem.ToString();
                 Pizarra.Refresh();
                 CBNodoPartida.SelectedIndex = -1;
             }
@@ -353,6 +380,49 @@ namespace Ejercicio_Guía_9
                     MessageBox.Show("El vértice " + txtBuscar.Text + " no se encuentra");
                 }
             }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            CalculandoMatriz();
+
+            nodoDijkstra = new NodoDijkstra();
+            foreach (CVertice nodo in grafo.nodos)
+            {
+                nodoDijkstra.cmbDijkstra.Items.Add(nodo.Valor);
+            }
+            nodoDijkstra.ShowDialog();
+
+            if(nodoDijkstra.control)
+            {
+                string miCadena = String.Empty;
+                algoritmoDijkstra = new Dijkstra(grafo.nodos.Count() - 1, matriz);
+                MessageBox.Show(algoritmoDijkstra.CorrerDijkstra(grafo));
+                miCadena = "La solución de la ruta más corta tomando como nodo inicial el nodo: " + nodoDijkstra.cmbDijkstra.Text + " es: \n";
+                int nodos = 0;
+                foreach (int i in algoritmoDijkstra.D)
+                {
+                    miCadena += $"Distancia mínima al nodo es: {i}\r\n";
+                    nodos++;
+                }
+
+            }
+        }
+
+        private void CBVertice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
 
@@ -439,6 +509,7 @@ namespace Ejercicio_Guía_9
 
         public void ordenarNodos()
         {
+
             nodosOrdenados = new List<CVertice>();
             bool est = false;
             foreach (CVertice nodo in grafo.nodos)
@@ -446,12 +517,18 @@ namespace Ejercicio_Guía_9
                 if (nodo.Valor == origen)
                 {
                     nodosOrdenados.Add(nodo);
+                    lstboxDatos.Items.Add(nodo.Valor);
                     est = true;
+
                 }
                 else if (est)
+                {
+                    lstboxDatos.Items.Add(nodo.Valor);
                     nodosOrdenados.Add(nodo);
+                }
             }
 
+            /*
             foreach (CVertice nodo in grafo.nodos)
             {
                 if (nodo.Valor == origen)
@@ -461,7 +538,7 @@ namespace Ejercicio_Guía_9
                 else if (est)
                     nodosOrdenados.Add(nodo);
 
-            }
+            }*/
         }
 
         private void recorridoProfundidad(CVertice vertice, Graphics g)
@@ -472,7 +549,11 @@ namespace Ejercicio_Guía_9
             vertice.DibujarVertice(g);
             foreach (CArco adya in vertice.ListaAdyacencia)
             {
-                if (!adya.nDestino.Visitando) recorridoProfundidad(adya.nDestino, g);
+                if (!adya.nDestino.Visitando)
+                {
+                    recorridoProfundidad(adya.nDestino, g);
+                }
+
             }
         }
 
@@ -513,7 +594,61 @@ namespace Ejercicio_Guía_9
         }
 
 
+        private int NodosTotales;
 
+        private void CBNodoPartida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //lstboxDatos.Items.Clear();
+        }
+
+        string[] nombres;
+        int[] parent;
+        bool[] nodosVisitados;
+        List<CVertice> rutaVertices;
+
+        private void CalculandoMatriz()
+        {
+            NodosTotales = grafo.nodos.Count;
+            matriz = new int[NodosTotales, NodosTotales];
+            nombres = new string[NodosTotales];
+            rutaVertices = new List<CVertice>();
+            parent = new int[NodosTotales];
+            nodosVisitados = new bool[NodosTotales];
+
+            for (int i = 0; i < NodosTotales; i++)
+            {
+                for (int j = 0; j < NodosTotales; j++)
+                {
+                    matriz[i, j] = -1;
+
+                }
+            }
+
+
+            for (int i = 0; i < NodosTotales; i++)
+            {
+                nombres[i] = grafo.nodos[i].ToString();
+                
+                foreach (CArco arco in grafo.nodos[i].ListaAdyacencia)
+                {
+                      matriz[i, Convert.ToInt32(arco.nDestino.Valor)-1] = arco.peso;
+
+                }
+
+            }
+
+            for (int i = 0; i < NodosTotales; i++)
+            {
+                for (int j = 0; j < NodosTotales; j++)
+                {
+                    MessageBox.Show(matriz[i,j].ToString());
+
+                }
+            }
+
+
+
+        }
 
 
 

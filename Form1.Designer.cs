@@ -54,6 +54,10 @@ namespace Ejercicio_Guía_9
             this.añadirVerticeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDijktra = new System.Windows.Forms.Button();
+            this.lstboxDatos = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.CMSVertice.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,9 +69,9 @@ namespace Ejercicio_Guía_9
             // Pizarra
             // 
             this.Pizarra.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Pizarra.Location = new System.Drawing.Point(321, 60);
+            this.Pizarra.Location = new System.Drawing.Point(329, 66);
             this.Pizarra.Name = "Pizarra";
-            this.Pizarra.Size = new System.Drawing.Size(474, 417);
+            this.Pizarra.Size = new System.Drawing.Size(458, 457);
             this.Pizarra.TabIndex = 0;
             this.Pizarra.Paint += new System.Windows.Forms.PaintEventHandler(this.Pizarra_Paint);
             this.Pizarra.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pizarra_MouseDown);
@@ -79,7 +83,7 @@ namespace Ejercicio_Guía_9
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(449, 9);
+            this.label1.Location = new System.Drawing.Point(453, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(234, 37);
             this.label1.TabIndex = 1;
@@ -118,10 +122,11 @@ namespace Ejercicio_Guía_9
             this.groupBox1.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 164);
+            this.groupBox1.Size = new System.Drawing.Size(270, 164);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Eliminar";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnEliminarVertice
             // 
@@ -153,6 +158,7 @@ namespace Ejercicio_Guía_9
             this.CBVertice.Name = "CBVertice";
             this.CBVertice.Size = new System.Drawing.Size(79, 31);
             this.CBVertice.TabIndex = 2;
+            this.CBVertice.SelectedIndexChanged += new System.EventHandler(this.CBVertice_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -176,14 +182,15 @@ namespace Ejercicio_Guía_9
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lstboxDatos);
             this.groupBox2.Controls.Add(this.btnAnchura);
             this.groupBox2.Controls.Add(this.btnProfundidad);
             this.groupBox2.Controls.Add(this.CBNodoPartida);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(21, 181);
+            this.groupBox2.Location = new System.Drawing.Point(21, 193);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(269, 131);
+            this.groupBox2.Size = new System.Drawing.Size(270, 260);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recorridos";
@@ -222,6 +229,7 @@ namespace Ejercicio_Guía_9
             this.CBNodoPartida.Name = "CBNodoPartida";
             this.CBNodoPartida.Size = new System.Drawing.Size(79, 31);
             this.CBNodoPartida.TabIndex = 2;
+            this.CBNodoPartida.SelectedIndexChanged += new System.EventHandler(this.CBNodoPartida_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -239,7 +247,7 @@ namespace Ejercicio_Guía_9
             this.groupBox3.Controls.Add(this.txtBuscar);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(52, 316);
+            this.groupBox3.Location = new System.Drawing.Point(52, 459);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(205, 111);
             this.groupBox3.TabIndex = 5;
@@ -281,12 +289,13 @@ namespace Ejercicio_Guía_9
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(87, 436);
+            this.button5.Location = new System.Drawing.Point(87, 576);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(116, 41);
             this.button5.TabIndex = 6;
             this.button5.Text = "Distancia";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // añadirVerticeToolStripMenuItem
             // 
@@ -306,11 +315,59 @@ namespace Ejercicio_Guía_9
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnDijktra
+            // 
+            this.btnDijktra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(17)))), ((int)(((byte)(84)))));
+            this.btnDijktra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDijktra.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDijktra.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnDijktra.Location = new System.Drawing.Point(354, 16);
+            this.btnDijktra.Name = "btnDijktra";
+            this.btnDijktra.Size = new System.Drawing.Size(80, 34);
+            this.btnDijktra.TabIndex = 7;
+            this.btnDijktra.Text = "Dijkstra";
+            this.btnDijktra.UseVisualStyleBackColor = false;
+            this.btnDijktra.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // lstboxDatos
+            // 
+            this.lstboxDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstboxDatos.FormattingEnabled = true;
+            this.lstboxDatos.ItemHeight = 23;
+            this.lstboxDatos.Location = new System.Drawing.Point(18, 121);
+            this.lstboxDatos.Name = "lstboxDatos";
+            this.lstboxDatos.Size = new System.Drawing.Size(230, 115);
+            this.lstboxDatos.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(430, 547);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(257, 23);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Click derecho para añadir un vértice";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe Print", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(360, 576);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(379, 46);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Para añadir un arco presione sobre un nodo en donde \r\n         iniciara y arrastr" +
+    "elo al nodo destino";
+            // 
             // Simulador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 489);
+            this.ClientSize = new System.Drawing.Size(819, 641);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnDijktra);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -345,7 +402,6 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.ToolStripMenuItem eliminarVérticeToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox CBArco;
-        private System.Windows.Forms.ComboBox CBVertice;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEliminarVertice;
@@ -362,6 +418,11 @@ namespace Ejercicio_Guía_9
         private System.Windows.Forms.ToolStripMenuItem añadirVerticeToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnDijktra;
+        public System.Windows.Forms.ComboBox CBVertice;
+        private System.Windows.Forms.ListBox lstboxDatos;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 

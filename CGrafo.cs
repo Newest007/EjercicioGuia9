@@ -14,6 +14,8 @@ namespace Ejercicio_Guía_9
         //Lista de nodos del grafo
         public List<CVertice> nodos;
 
+        public List<CVertice> vertic;
+
 
         //==========================================//
         //            Constructores                 //
@@ -214,7 +216,6 @@ namespace Ejercicio_Guía_9
                 n.pesoAsignado = false;
             }
         }
-
 
     }
 }
