@@ -637,11 +637,17 @@ namespace Ejercicio_Guía_9
 
             }
 
+            lstboxDatos.Items.Clear();
+
             for (int i = 0; i < NodosTotales; i++)
             {
                 for (int j = 0; j < NodosTotales; j++)
                 {
-                    MessageBox.Show(matriz[i,j].ToString());
+
+
+                    lstboxDatos.Items.Add(matriz[i, j]);
+
+                    //MessageBox.Show(matriz[i,j].ToString());
 
                 }
             }
