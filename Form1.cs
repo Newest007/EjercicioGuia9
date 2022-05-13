@@ -403,7 +403,7 @@ namespace Ejercicio_Guía_9
             if(nodoDijkstra.control)
             {
                 string miCadena = String.Empty;
-                algoritmoDijkstra = new Dijkstra(grafo.nodos.Count() - 1, matriz);
+                algoritmoDijkstra = new Dijkstra(grafo.nodos.Count(), matriz);
                 MessageBox.Show(algoritmoDijkstra.CorrerDijkstra(grafo));
                 miCadena = "La solución de la ruta más corta tomando como nodo inicial el nodo: " + nodoDijkstra.cmbDijkstra.Text + " es: \n";
                 int nodos = 0;

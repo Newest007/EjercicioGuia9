@@ -17,6 +17,7 @@ namespace Ejercicio_Guía_9
         // Algoritmo Dijkstra
         public Dijkstra(int paramRango, int [,] paramArreglo)
         {
+            paramRango = paramRango - 1;
             L = new int[paramRango, paramRango];
             C = new int[paramRango];
             D = new int[paramRango];
